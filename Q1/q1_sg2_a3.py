@@ -2,7 +2,7 @@
 ※Formatted using functions for organization
 ※Alternate solution but conflicts with the use of selection structure to determine the chinese zodiac sign and displaying the correct output
 so original and expected solution is retained.
-※Text effects for emphasis and style
+※Text effects, time module, and os module for emphasis and style
 ※#comments everywhere
 ※Title for program kasi i am muon themed.
 """
