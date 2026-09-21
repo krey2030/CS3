@@ -22,4 +22,4 @@ sweet = Sauce("sweet sauce", "sweet")
 spicy = Sauce("spicy sauce", "spicy")
 fishball.dip(vinegar)
 fishball.dip(sweet)
-fishball.eat()
+fishball.eat()#test
