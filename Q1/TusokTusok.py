@@ -1,4 +1,4 @@
-class tusokTusok:
+class tusokTusok:#from ejirth
     name = ""
     sauce = []
     def __init__(self, name):
@@ -22,4 +22,4 @@ sweet = Sauce("sweet sauce", "sweet")
 spicy = Sauce("spicy sauce", "spicy")
 fishball.dip(vinegar)
 fishball.dip(sweet)
-fishball.eat()#test
+fishball.eat()
