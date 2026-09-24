@@ -1,5 +1,4 @@
 """
-UNFINISHED** https://www.geeksforgeeks.org/python/convert-string-into-variable-name-in-python/
 ※A creative title and explaination🥰
 ※Text effects, time module, and os module for emphasis and style
 ※May have been used for reference: https://github.com/Ejirth/CS3/blob/main/Q1/q1_sg7_Pinatubo_Espiritu.py because plagiarizing without crediting is bad, also sampleInheristance and sampleComposition notes.
