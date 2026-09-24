@@ -19,7 +19,7 @@ class Cell:
         self.Nucleus = Nucleus()
         self.Mitochondria = Mitochondria()
     def exist(self):
-        print("Celll is existing")
+        print("Cell is existing")
         self.Mitochondria.powerTheCell()
     def __del__(self):
         del self.Nucleus
