@@ -15,20 +15,22 @@ def effect(Effect: int): #text style and emphasis for bold, italic, underlines, 
     return f"\x1b[{Effect}m" #1 = bold, #3 = italic, #4 = underline, #22 removes bold, #23 removes italic, #24 = removes underline
 
 class Glassware:
-    def __init__(self):
-        None
-
-class Beaker(Glassware):
+    def __init__(self, object_type="Glassware"):
+        self.object_type = object_type
+    
+class Beaker():
     def __init__(self, object_type):
         super().__init__(object_type)
+        print(f"They are glasswares.")
     def __del__(self):
-        print(f"The Beakers from the tray is lost into the system. You can't see it in the inventory anymore...")#is this foreshadowing a future game.
+        print(f"{effect(3)}The beakers from the tray is lost into the system. You can't see it in the inventory anymore..\n{effect(23)}")#is this foreshadowing a future game.
 
 class Tray:
     def __init__(self):
         print(f"{effect(22)}{effect(3)}A tray was organized into existence in the inventory.{effect(23)}")
-        self.Glassware = Glassware()
-    #__del__ is unnessecary
+        self.beaker = Beaker()
+    def __del__(self):
+        del self.beaker 
 
 def Program_run():#starts program and simple explanation
     sys("cls")
@@ -40,10 +42,11 @@ def Program_run():#starts program and simple explanation
     time.sleep(0.5)
     trays = []
     while True:#Example Input
-        inventory = input(f"{effect(22)}Input {effect(1)}{effect(3)}y{effect(22)}{effect(23)} to create a tray, {effect(1)}{effect(3)}x{effect(22)}{effect(23)} to delete a tray. Otherwise, program would be terminated.{effect(1)}{effect(3)}")
+        print(f"{effect(22)}Input {effect(1)}{effect(3)}y{effect(22)}{effect(23)} to create a tray, {effect(1)}{effect(3)}x{effect(22)}{effect(23)} to delete a tray. Input ")
+        inventory = input(f"Otherwise, program would be terminated.{effect(1)}{effect(3)}")
         time.sleep(0.5)
         if inventory == "y":#create a tray
-            varname = input(f"{effect(22)}{effect(23)}Name your tray with a unique name.{effect(1)}")
+            varname = input(f"{effect(22)}{effect(23)}Name your tray with a unique name.\nIf it is not unique. it would replace the first tray.\n{effect(1)}")
             trays.append(varname)
             globals()[varname] = Tray()
         elif inventory == "x":
@@ -55,14 +58,17 @@ def Program_run():#starts program and simple explanation
                     else:break
             time.sleep(0.4)
             for indivtray in range(traydel):
-                print(traydel-indivtray)
-                del globals()[trays[traydel-indivtray]]
-                print(f"{effect(3)}Tray {effect(1)}{trays[traydel-indivtray]}{effect(22)} has been deleted.{effect(23)}")
+                print(f"{effect(3)}Tray {effect(1)}{trays[0]}{effect(22)} has been deleted.{effect(23)}")
+                del globals()[trays[0]]
+                trays.pop(0)
                 time.sleep(0.4)
+                
         else:break
 
     print(f"{effect(3)}Program terminated.{effect(0)}")
     time.sleep(1)
     sys("cls")#"cls" for VSCode, "clear" for onlinegdb
+    time.sleep(0.4)
+    print(f"{effect(3)}Program terminated.{effect(0)}")
 
 if __name__ == "__main__":Program_run()
