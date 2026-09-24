@@ -4,6 +4,7 @@ UNFINISHED** https://www.geeksforgeeks.org/python/convert-string-into-variable-n
 ※Text effects, time module, and os module for emphasis and style
 ※Lore-accurate to pshs-clc
 ※May have been used for reference: https://github.com/Ejirth/CS3/blob/main/Q1/q1_sg7_Pinatubo_Espiritu.py because plagiarizing without crediting is bad, also sampleInheristance and sampleComposition notes.
+※I regret this but it would be difficult but also uses chatgpt to make dynamic variables.
 ※#some comments
 ※Title for program kasi i am muon themed.
 
@@ -21,15 +22,13 @@ class Beaker(Glassware):
     def __init__(self, object_type):
         super().__init__(object_type)
     def __del__(self):
-        print(f"Beaker is lost into the system. You can't see it in the inventory anymore...")#is this foreshadowing a future game.
+        print(f"The Beakers from the tray is lost into the system. You can't see it in the inventory anymore...")#is this foreshadowing a future game.
 
 class Tray:
     def __init__(self):
-        print(f"A tray was organized into existence in the inventory.")
+        print(f"{effect(22)}{effect(3)}A tray was organized into existence in the inventory.{effect(23)}")
         self.Glassware = Glassware()
-    def __del__(self):
-        print(f"A tray has been deleted.") 
-        del self.Glassware
+    #__del__ is unnessecary
 
 def Program_run():#starts program and simple explanation
     sys("cls")
@@ -44,18 +43,22 @@ def Program_run():#starts program and simple explanation
         inventory = input(f"{effect(22)}Input {effect(1)}{effect(3)}y{effect(22)}{effect(23)} to create a tray, {effect(1)}{effect(3)}x{effect(22)}{effect(23)} to delete a tray. Otherwise, program would be terminated.{effect(1)}{effect(3)}")
         time.sleep(0.5)
         if inventory == "y":#create a tray
-            varname = input(f"{effect(22)}{effect(23)}{effect(22)}Name your tray with a unique name.{effect(1)}")
+            varname = input(f"{effect(22)}{effect(23)}Name your tray with a unique name.{effect(1)}")
             trays.append(varname)
-            exec("trays[-1] = Tray()")
+            globals()[varname] = Tray()
         elif inventory == "x":
             while True:
-                try:traydel = int(input(f"How many trays would you delete?"))
+                try:traydel = int(input(f"{effect(22)}{effect(23)}How many trays would you delete?\n"))
                 except ValueError:print(f"{effect(3)}Please input an integer.")
                 else:
                     if traydel < 0:print(f"{effect(3)}Please input a non-negative number.")
                     else:break
+            time.sleep(0.4)
             for indivtray in range(traydel):
-                del (exec("trays[traydel-indivtray]"))
+                print(traydel-indivtray)
+                del globals()[trays[traydel-indivtray]]
+                print(f"{effect(3)}Tray {effect(1)}{trays[traydel-indivtray]}{effect(22)} has been deleted.{effect(23)}")
+                time.sleep(0.4)
         else:break
 
     print(f"{effect(3)}Program terminated.{effect(0)}")
