@@ -1,4 +1,4 @@
-"""COMPOSITION"""
+"""COMPOSITION"""#also from ejirth and many others
 class Nucleus:
     def __init__(self):
         print("Nucleus created")
