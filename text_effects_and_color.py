@@ -26,5 +26,5 @@ def effect(Effect: int): #text style and emphasis for bold, italic, underlines, 
     return f"\x1b[{Effect}m" #1 = bold, #3 = italic, #4 = underline, #22 removes bold, #23 removes italic, #24 = removes underline
 """
 by:Tau Comlines
-Kurt Ashe Rey. Intal
+—Kurt Ashe Rey. Intal
 """
