@@ -1,2 +1,2 @@
-download "text_effects_and_color.py" for EVERY project after Q1
-to be more specific, the project would have "from text_effects_and_color import *"
+download **text_effects_and_color.py** for EVERY project after Q1
+to be more specific, the project would have _**from text_effects_and_color import ***_
