@@ -1,2 +1,2 @@
-download **text_effects_and_color.py** for EVERY python project after Q1
-to be more specific, the project would have **_from text_effects_and_color import *_**
+download **important_module.py** with EVERY python project after Q1
+to be more specific, the project would have **_important_module.py *_**
