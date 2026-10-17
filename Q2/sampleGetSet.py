@@ -1,5 +1,5 @@
 """
-※INCOMPLETE
+※INCOMPLETE but not important
 
 """
 from os import system as sys #makes it simple
