@@ -1,8 +1,5 @@
 """
-※Text effects, time module, and os module for emphasis and style
-※Used for reference:  because plagiarizing without crediting is bad※※※※※※※※※※※※※
-※#some comments
-※Title for program kasi i am muon themed.
+※INCOMPLETE
 
 """
 from os import system as sys #makes it simple
