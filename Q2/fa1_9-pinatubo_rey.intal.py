@@ -1,24 +1,24 @@
 """
-Lines 9 ~ 17 — Table of Contents and important message
-Lines 18 ~ 20 — Imports
-Class at line 22 — Publication Class
-Class at line 38 — Book Subclass
-Class at line 51 — Magazine Subclass
+Lines 1 ~ 22 — Table of Contents and important message
+Lines 23 ~ 25 — Imports
+Class at line 27 — Publication Class
+Class at line 43 — Book Subclass
+Class at line 56 — Magazine Subclass
 Lines 69~73 — Introduction
-Lines 71~94 — Sample use of the classes
-Lines 69 ~73 — Creating the objects
-Lines 69~73 — Displaying the objects
-Lines 69~73 — Using your classes yourself with input
-Lines 69 — Action input
-Lines 69~73 — Creating components of Publication
-Lines 69~73 — Creating the publication
-Lines 69 — View publications
-Lines 69~73 — Set publication information
-Lines 69~73 — Delete Publications
-Lines 189 ~ 205 — End message, and necessities for rubrics
+Lines 75~99 — Sample use of the classes
+Lines 75~85 — Creating the objects
+Lines 87~99 — Displaying the objects
+Lines 101~197 — Using your classes yourself with input
+Lines 103,104 — Action input
+Lines 106~133 — Creating Attributes of Publication
+Lines 135~149 — Creating the Publication
+Lines 151~155 — View Publications
+Lines 157~182 — Set Publication information
+Lines 184~195 — Deleting Publications
+Lines 205 ~ 243 — End message, and necessities for rubrics
 
 ※Used for reference: https://github.com/krey2030/CS3/blob/main/Q1/q1_sg7_pinatubo_rey.intal.py
-※DOWNLOAD ALONGSIDE THIS for no errors: https://github.com/krey2030/CS3/blob/main/important_module.py
+※IMPORTANT; needed to be downloaded alongside this: https://github.com/krey2030/CS3/blob/main/important_module.py
 """
 from os import system as sys #makes it simple
 import time
@@ -97,7 +97,6 @@ time.sleep(0.5)
 print(f"\n{effect(1)}Magazine Information:{effect(22)}")
 mag1.display_info()
 time.sleep(0.5)
-
 
 #Creating YOUR own objects
 while True:
@@ -239,7 +238,6 @@ Following Instructions and Requirements:
     →nothing was copy pasted from AI (that i did not originally write)
     →I ended up getting rid of "program_run" function and if __name__ = "__main__" because there's problems with using locals()
 
-This took a whole day to make. 【Combined with yesterday Oct.16,2026 class】
-A project under "Spider Commuons" which is like my new "company name"
-
+• This took a whole day to make. 【Combined with yesterday Oct.16,2026 class】【About 11 hours ata】
+• A project under "Spider Commuons" which is like my new "company name"
 """
