@@ -8,14 +8,14 @@ Lines 69~73 — Introduction
 Lines 75~99 — Sample use of the classes
 Lines 75~85 — Creating the objects
 Lines 87~99 — Displaying the objects
-Lines 101~197 — Using your classes yourself with input
+Lines 101~205 — Using your classes yourself with input
 Lines 103,104 — Action input
 Lines 106~133 — Creating Attributes of Publication
-Lines 135~149 — Creating the Publication
-Lines 151~155 — View Publications
-Lines 157~182 — Set Publication information
-Lines 184~195 — Deleting Publications
-Lines 205 ~ 243 — End message, and necessities for rubrics
+Lines 135~157 — Creating the Publication
+Lines 159~163 — View Publications
+Lines 165~190 — Set Publication information
+Lines 192~203 — Deleting Publications
+Lines 213 ~ 252 — End message, and necessities for rubrics
 
 ※Used for reference: https://github.com/krey2030/CS3/blob/main/Q1/q1_sg7_pinatubo_rey.intal.py
 ※IMPORTANT; needed to be downloaded alongside this: https://github.com/krey2030/CS3/blob/main/important_module.py
@@ -100,8 +100,8 @@ time.sleep(0.5)
 
 #Creating YOUR own objects
 while True:
-    print(f"{effect(22)}{effect(23)}\nInput {effect(1)}{effect(3)}p{effect(22)}{effect(23)} to create a simple publication. Input {effect(1)}{effect(3)}b{effect(22)}{effect(23)} to create a book. Input {effect(1)}{effect(3)}m{effect(22)}{effect(23)} to create a magazine. ")
-    pubchoice = input(f"Input {effect(1)}{effect(3)}v{effect(22)}{effect(23)} to show all or one publication. Input {effect(1)}{effect(3)}z{effect(22)}{effect(23)} to alter information. Input {effect(1)}{effect(3)}x{effect(22)}{effect(23)} to clear out one or all publications.\n{effect(1)}{effect(3)}").lower()
+    print(f"{effect(22)}{effect(23)}\nInput {effect(1)}{effect(3)}p{effect(22)}{effect(23)} to create a simple publication. Input {effect(1)}{effect(3)}b{effect(22)}{effect(23)} to create a book. Input {effect(1)}{effect(3)}m{effect(22)}{effect(23)} to create a magazine. Input {effect(1)}{effect(3)}z{effect(22)}{effect(23)} to alter information.")
+    pubchoice = input(f"Input {effect(1)}{effect(3)}v{effect(22)}{effect(23)} to show all or one publication. Input {effect(1)}{effect(3)}x{effect(22)}{effect(23)} to clear out one or all publications. Otherwise program will terminate.\n{effect(1)}{effect(3)}").lower()
     time.sleep(0.5)
     if pubchoice == "p" or pubchoice == "b" or pubchoice == "m":#title and author
         pub_title = input(f"{effect(22)}{effect(23)}Input publication title.{effect(3)}\n")
@@ -138,16 +138,24 @@ while True:
         while True:
             try:globals()[varname] = Book(pub_title,pub_author,book_page_amount)
             except ArithmeticError:
-                print(f"{effect(22)}{effect(3)}The number of pages must be an integer. {effect(1)}Try again{effect(22)}.{effect(23)}")#user must try again since it must have value.
-                try:book_page_amount = int(input(f"{effect(22)}{effect(23)}Input number of pages.{effect(1)}\n"))
-                except ValueError:print(f"{effect(22)}{effect(3)}The number of pages must be an integer. {effect(1)}Try again{effect(22)}.{effect(23)}")#user must try again since it must have value.
-    elif pubchoice == "m":#magazine
-        try:globals()[varname] = Magazine(pub_title,pub_author,mag_issue_number)
-        except ArithmeticError:
-            print(f"{effect(22)}{effect(3)}The issue number must be positive. {effect(1)}Try again{effect(22)}.{effect(23)}")#user must try again since it must have value.
-            try:mag_issue_number = int(input(f"{effect(22)}{effect(23)}Input number of pages.{effect(1)}\n"))
-            except ValueError:print(f"{effect(22)}{effect(3)}The issue number must be an integer. {effect(1)}Try again{effect(22)}.{effect(23)}")#user must try again since it must have value.
-            
+                print(f"{effect(22)}{effect(3)}The number of pages must be positive. {effect(1)}Try again{effect(22)}.{effect(23)}")#user must try again since it must have value.
+                while True:
+                    try:book_page_amount = int(input(f"{effect(22)}{effect(23)}Input number of pages.{effect(1)}\n"))
+                    except ValueError:print(f"{effect(22)}{effect(3)}The number of pages must be an integer. {effect(1)}Try again{effect(22)}.{effect(23)}")#user must try again since it must have value.
+                    else:break
+            else:break
+    elif pubchoice == "m":#magazine4
+        while True:
+            try:globals()[varname] = Magazine(pub_title,pub_author,mag_issue_number)
+            except ArithmeticError:
+                print(f"{effect(22)}{effect(3)}The issue number must be positive. {effect(1)}Try again{effect(22)}.{effect(23)}")#user must try again since it must have value.
+                while True:
+                    try:mag_issue_number = int(input(f"{effect(22)}{effect(23)}Input issue number.{effect(1)}\n"))
+                    except ValueError:
+                        print(f"{effect(22)}{effect(3)}The issue number must be an integer. {effect(1)}Try again{effect(22)}.{effect(23)}")#user must try again since it must have value.
+                    else:break
+            else:break
+
     elif pubchoice == "v": #View (gets)
         for publication in publications:
             time.sleep(0.5)
@@ -222,6 +230,7 @@ Following Instructions and Requirements:
     Error handling:
     →ALOT of error handling; implementing the delete actions was so difficult and everything needs alot of debugging but finally works seemingly perfectly.
     Portfolio → Portfolio was updated naman
+    →There's an error AttributeError, but it apparently the program keeps running normally.
 
     Creativity:
     →Obvious naman andami ko nilagay dito
