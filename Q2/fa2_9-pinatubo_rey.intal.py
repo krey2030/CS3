@@ -1,9 +1,10 @@
 """
-• Text effects, time module, and os module for emphasis and style
+※ Text effects, time module, and os module for emphasis and style
 ※ I made it so the user could input the patient and all their details, and can view one or all the patient details, and set their details too.
  → An explanation was given too and user-friendly inputs. Also a  muon-themed title🥰
 ※Heavily used for reference: https://github.com/krey2030/CS3/blob/main/Q2/fa1_9-pinatubo_rey.intal.py
-※IMPORTANT; needed to be downloaded alongside this: https://github.com/krey2030/CS3/blob/main/important_module.py
+※Also: https://github.com/krey2030/CS3/blob/main/Q1/q1_sg7_pinatubo_rey.intal.py
+※※IMPORTANT; needed to be downloaded alongside this: https://github.com/krey2030/CS3/blob/main/important_module.py ※※
 """
 from os import system as sys #makes it simple
 import time
