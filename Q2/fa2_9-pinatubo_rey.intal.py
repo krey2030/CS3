@@ -1,23 +1,8 @@
 """
-Lines 1 ~ 22 — Table of Contents and important message
-Lines 23 ~ 25 — Imports
-Class at line 27 — Publication Class
-Class at line 43 — Book Subclass
-Class at line 56 — Magazine Subclass
-Lines 69~73 — Introduction
-Lines 75~99 — Sample use of the classes
-Lines 75~85 — Creating the objects
-Lines 87~99 — Displaying the objects
-Lines 101~205 — Using your classes yourself with input
-Lines 103,104 — Action input
-Lines 106~133 — Creating Attributes of Publication
-Lines 135~157 — Creating the Publication
-Lines 159~163 — View Publications
-Lines 165~190 — Set Publication information
-Lines 192~203 — Deleting Publications
-Lines 213 ~ 252 — End message, and necessities for rubrics
-
-※Used for reference: https://github.com/krey2030/CS3/blob/main/Q1/q1_sg7_pinatubo_rey.intal.py
+• Text effects, time module, and os module for emphasis and style
+※ I made it so the user could input the patient and all their details, and can view one or all the patient details, and set their details too.
+ → An explanation was given too and user-friendly inputs. Also a  muon-themed title🥰
+※Heavily used for reference: https://github.com/krey2030/CS3/blob/main/Q2/fa1_9-pinatubo_rey.intal.py
 ※IMPORTANT; needed to be downloaded alongside this: https://github.com/krey2030/CS3/blob/main/important_module.py
 """
 from os import system as sys #makes it simple
@@ -40,7 +25,7 @@ class Patient:
     def display_info(self,c):
         print(f"Patient Name: {self.__name}")
         print(f"Orignal Bill: {c}{self.__billamount}")
-        print(f"Final Bill: {c}{self.__name}")
+        print(f"Final Bill: {c}{self.calculate_bill()}")
 
 class SeniorPatient(Patient):
     def calculate_bill(self):
@@ -68,7 +53,7 @@ def Program_run():#starts program and simple explanation
             patient_name = input(f"{effect(22)}{effect(23)}Input Patient Name.{effect(1)}\n")
             time.sleep(0.5)
             while True:
-                try:patient_bill = input(f"{effect(22)}{effect(23)}Input Original Bill without discounts.{effect(1)}\n")
+                try:patient_bill = float(input(f"{effect(22)}{effect(23)}Input Original Bill without discounts.{effect(1)}\n"))
                 except ValueError:
                     print(f"{effect(22)}{effect(3)}The bill must be an integer/decimal number. {effect(1)}Try again{effect(22)}.{effect(23)}")#user must try again since it must have value.
                     time.sleep(0.1)
@@ -81,9 +66,9 @@ def Program_run():#starts program and simple explanation
         patients = list(dict.fromkeys(patients))#remove duplicates
 
         #Create the Publication
-        if patientchoice == "p":globals()[varname] = Patient(patient_name,patient_bill)#is easy to create
-        elif patientchoice == "b":globals()[varname] = SeniorPatient(patient_name,patient_bill)
-        elif patientchoice == "m":globals()[varname] = PhilHealthPatient(patient_name,patient_bill)
+        if patientchoice == "r":globals()[varname] = Patient(patient_name,patient_bill)#is easy to create
+        elif patientchoice == "s":globals()[varname] = SeniorPatient(patient_name,patient_bill)
+        elif patientchoice == "h":globals()[varname] = PhilHealthPatient(patient_name,patient_bill)
         
         elif patientchoice == "v": #View (gets)
             patientview = input(f"{effect(22)}{effect(23)}Input {effect(1)}{effect(3)}x{effect(22)}{effect(23)} to view all patient details. Input {effect(1)}{effect(3)}y{effect(22)}{effect(23)} to view one patient detail. Otherwise you won't view a patient detail.\n{effect(1)}{effect(3)}").lower()
@@ -91,75 +76,41 @@ def Program_run():#starts program and simple explanation
                 for patient in patients:
                     time.sleep(0.5)
                     print(f"\n{effect(3)}ID{effect(23)}: {effect(1)}{patient}{effect(22)}")
-                    globals()[patient].display_info()
+                    globals()[patient].display_info(c)
             elif patientview == "y":
                 print(f"{effect(22)}{effect(23)}List of patient IDs")
                 for patient in patients:print(f"{effect(1)}{patient}{effect(22)}")
                 patientview1 = input(f"Input the patient ID to view details.\n{effect(1)}")
                 try:patients.index(patientview1)
                 except ValueError:print(f"{effect(22)}{effect(3)}There is no {effect(1)}{patientview1}{effect(22)} in patient IDs. No details were viewed.{effect(23)}")
-                else:globals()[patient].display_info()
+                else:globals()[patient].display_info(c)
         
         elif patientchoice == "z": #Set
-            print(f"{effect(22)}{effect(23)}List of publication IDs")
+            print(f"{effect(22)}{effect(23)}List of patient IDs")
             for patient in patients:print(f"{effect(1)}{patient}{effect(22)}")
             patientalterwhat = None
-            patientalterwhich = input(f"\nInput the ID of the publication to alter information with.\n{effect(1)}")#Choose the publication to set information
+            patientalterwhich = input(f"\nInput the ID of the patient to alter information with.\n{effect(1)}")#Choose the patient to set information
             try:patients.index(patientalterwhich)
-            except ValueError:print(f"{effect(22)}{effect(3)}There is no {effect(1)}{patientalterwhich}{effect(22)} in publication IDs. Nothing was cleared away.{effect(23)}")
+            except ValueError:print(f"{effect(22)}{effect(3)}There is no {effect(1)}{patientalterwhich}{effect(22)} in patient IDs. Nothing was altered.{effect(23)}")
             else:#Set the patient information
                 time.sleep(0.5)
-                patientalterwhat = input(f"{effect(23)}{effect(22)}What do you want to alter? Input {effect(1)}{effect(3)}name{effect(22)}{effect(23)} or {effect(1)}{effect(3)}bill{effect(22)}{effect(23)}.{effect(1)}{effect(3)}").lower()
+                patientalterwhat = input(f"{effect(23)}{effect(22)}What do you want to alter? Input {effect(1)}{effect(3)}name{effect(22)}{effect(23)} or {effect(1)}{effect(3)}bill{effect(22)}{effect(23)}.{effect(1)}{effect(3)}\n").lower()
             if patientalterwhat == "name":
-                patientalterto = input(f"Set the new name of patient {effect(1)}{patientalterwhich}{effect(22)}.\n{effect(1)}")
-                globals()[patientalterwhich].set_title(patientalterto)
+                patientalterto = input(f"{effect(23)}{effect(22)}Set the new name of patient {effect(1)}{patientalterwhich}{effect(22)}.\n{effect(1)}")
+                globals()[patientalterwhich].set_name(patientalterto)
             elif patientalterwhat == "bill":
-                patientalterto = input(f"Set the new author of the publication {effect(1)}{patientalterwhich}{effect(22)}.\n{effect(1)}")
+                patientalterto = input(f"Set the new original bill of the patient {effect(1)}{patientalterwhich}{effect(22)}.\n{effect(1)}")
                 globals()[patientalterwhich].set_billamount(patientalterto)
-        else:break
+            else:print(f"{effect(22)}Nothing was altered.{effect(23)}")
 
     time.sleep(1)
     sys("cls")#"cls" for VSCode, "clear" for onlinegdb
     time.sleep(0.4)
     print(f"{effect(3)}Program terminated.{effect(22)}")
 
+if __name__ == "__main__":Program_run()
+
 """
-• It is long enough so I included Table of Contents.
-
-Following Instructions and Requirements:
-    Code Functionality:
-    →Classes has their attributes and methods and a little more. get/set_number_of_pages() have been renamed.
-    →Book and Magazine is inherited from Publication.
-    →Objects in the example are provided, and you can create your own objects and also alter the sample objects.
-    →Hopefully no errors.
-
-    Code Efficiency:
-    →display_info() would also display number of pages or issue number.
-    →Methods are used in the sample and can be used when creating your own objects.
-    Good coding practice:
-    →Comments are present naman
-    →Variables aren't nonsense naman ata
-
-    Error handling:
-    →ALOT of error handling; implementing the delete actions was so difficult and everything needs alot of debugging but finally works seemingly perfectly.
-    Portfolio → Portfolio was updated naman
-    →There's an error AttributeError, but it apparently the program keeps running normally.
-
-    Creativity:
-    →Obvious naman andami ko nilagay dito
-    →Table of Contents
-    →Effect function like my usual style
-    →Delete function
-    →Creating your own objects
-    →Basta napakadami
-
-※stupidly used AI many times since it returns AttributeError. The problem is literally because of inconsistency. self.title = __title instead of self.__title = __title
-    →Google would never gives personalized results, my case is a bit specific yata
-    →The other time, also looking for the word "personalized" which is ironic. Google wouldn't have gave me the word, but AI would be personalized...
-    →and again, trying to delete publications, it sucks to use AI, im sorry
-    →nothing was copy pasted from AI (that i did not originally write)
-    →I ended up getting rid of "program_run" function and if __name__ = "__main__" because there's problems with using locals()
-
-• This took a whole day to make. 【Combined with yesterday Oct.16,2026 class】【About 11 hours ata】
+• This took 2.5 periods to make. 【Oct.22,2026 wellness】Progress on Oct.22 3:45-4:15 was not saved so time taken to do it in CS period on 7:50-8:20am
 • A project under "Spider Commuons" which is like my new "company name"
 """
