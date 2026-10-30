@@ -15,7 +15,6 @@ class Patient:
         self.__name = __name
         self.__billamount = __billamount
         time.sleep(0.2)
-        #print(f"{effect(22)}{effect(3)}{__name}{effect(23)} is made clear and is organized into the library.")
     def get_name(self):return self.__name
     def get_billamount(self):return self.__billamount
     def set_name(self,__name):self.__name = __name
@@ -25,16 +24,20 @@ class Patient:
     def calculate_bill(self):return self.__billamount
     def display_info(self,c):
         print(f"Patient Name: {self.__name}")
+        print(f"Patient Type: {self.display_patient_type()}")
         print(f"Orignal Bill: {c}{self.__billamount}")
         print(f"Final Bill: {c}{self.calculate_bill()}")
+    def display_patient_type(self):return "Regular Patient"
 
 class SeniorPatient(Patient):
     def calculate_bill(self):
         return super().get_billamount()*0.8
+    def display_patient_type(self):return "Senior Citizen"
 
 class PhilHealthPatient(Patient):
     def calculate_bill(self):
         return super().get_billamount()*0.85
+    def display_patient_type(self):return "PhilHealth Member"
 
 def Program_run():#starts program and simple explanation
     sys("cls")
