@@ -32,6 +32,9 @@ class Glassware:
 class Beaker(Glassware):
     def __init__(self, object_type="Glassware"):
         super().__init__(object_type)
+    def fill(self, Temp, pH):
+        self.Temp = Temp
+        self.pH = pH
 
 class Tray:
     def __init__(self):
@@ -100,9 +103,28 @@ def Program_run():#starts program and simple explanation
                     time.sleep(0.1)
                 else:
                     if Temp > -273.15:
-                        None
+                        while True:
+                            try:fills = int(input(f"{effect(22)}{effect(23)}Input the number of beakers to fill. You can only fill one tray.{effect(1)}\n"))#In a more advanced Lab Inventory System, the user might be able to input a different glassware
+                            except ValueError:
+                                print(f"{effect(22)}{effect(3)}Please input a whole number.{effect(23)}")
+                                time.sleep(0.1)
+                            else:
+                                if fills < 0:
+                                    print(f"{effect(22)}{effect(3)}Please input a whole number.{effect(23)}")
+                                    time.sleep(0.1)
+                                elif fills > 5:
+                                    print(f"{effect(22)}{effect(3)}You cannot input more than 5 beakers. Please input a number between 0-5.{effect(23)}")
+                                elif fills != 5:#must label
+                                    for fill in range(fills):
+                                        varname = input(f"\n{effect(23)}{effect(22)}Add a {effect(1)}label{effect(22)} to your beaker—it must be unique.\nIf it is not unique, it would replace the liquid in the beaker with the same label.\n{effect(1)}")
+                                        None.append(varname)#must have list
+                                    break
+                                else:None#no need to label
                     else:print(f"{effect(22)}{effect(3)}The pH must be an integer/decimal number between 0-14.{effect(23)}")
-        
+
+        elif inventory == "s":
+            SenseType = input(f"{effect(22)}{effect(23)}Input {effect(1)}{effect(3)}temp{effect(22)}{effect(23)} to check the temperature of a liquid in a beaker. Input {effect(1)}{effect(3)}ph{effect(22)}{effect(23)} to check the pH of the liquid. {effect(1)}\n")
+
         elif inventory == "v":
             print()
             if len(trays) == 1:print(f"{effect(22)}{effect(23)}There is just a tray.")
