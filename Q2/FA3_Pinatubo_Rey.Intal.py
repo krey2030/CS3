@@ -5,26 +5,28 @@
 ※I regret this but it would be difficult but also uses chatgpt to make dynamic variables. ...and a little bit more for understanding ...
 ※#some comments
 ※Title for program kasi i am muon themed.
+※BETTER VERSION: https://github.com/krey2030/CS3/blob/main/Q2/fa2_9-pinatubo_rey.intal.py
+ → This version can't be uploaded alongside more files, so the function used from an imported file is moved directly here.
 
 """
 from os import system as sys #makes it simple
 from abc import *   
 import time
-from important_module import * #REQUIRED TO DOWNLOAD "important_module"
-"""
+def effect(Effect: int): #text style and emphasis for bold, italic, underlines, etc. EXTRA FEATURE for all my activities*
+    return f"\x1b[{Effect}m" #1 = bold, #3 = italic, #4 = underline, #22 removes bold, #23 removes italic, #24 = removes underline
+
 class Sensor(ABC):
     @abstractmethod
     def get_reading(self):
         None
 
 class TempSensor(Sensor):
-    def get_reading():print(Sensor.get_reading())
+    def get_reading(self):None
 
 class PHSensor(Sensor):
     def get_reading():
         None#my preference rather than pass
-newsen = TempSensor()
-"""
+
 class Glassware:
     def __init__(self, object_type="Glassware"):
         self.object_type = object_type
@@ -32,9 +34,14 @@ class Glassware:
 class Beaker(Glassware):
     def __init__(self, object_type="Glassware"):
         super().__init__(object_type)
+        self.filled = False
     def fill(self, Temp, pH):
         self.Temp = Temp
         self.pH = pH
+        self.filled = True
+    def __str__(self):
+        if self.filled:return f"{effect(1)}Filled {effect(3)}Glassware{effect(23)} Beaker{effect(22)}"
+        else:return f"{effect(1)}Empty {effect(3)}Glassware{effect(23)} Beaker{effect(22)}"
 
 class Tray:
     def __init__(self):
@@ -54,9 +61,9 @@ def Program_run():#starts program and simple explanation
     time.sleep(0.5)
     print(f"The beakers are unstably living⏳, and travels vast distances, just like a 𝓂 𝓊𝑜𝓃 ⚛. They travel so vast they get lost into the system.")
     time.sleep(0.5)
-    print(f"The beakers can now {effect(4)}be filled with a liquid; the liquid will have 2 properties: {effect(1)}pH{effect(22)} and {effect(1)}Temperature{effect(22)}{effect(24)}.")
+    print(f"The beakers can now {effect(4)}be filled with a liquid; the liquid will have 2 properties: {effect(1)}pH{effect(22)} and {effect(1)}Temperature{effect(22)}{effect(24)}.")#main point of FA3
     time.sleep(0.5)
-    print(f"{effect(4)}You will be given a {effect(1)}sensor{effect(22)} that could either check the {effect(1)}temperature{effect(22)} or the {effect(1)}pH{effect(22)} of the liquid.{effect(24)}")
+    print(f"{effect(4)}You will be given a {effect(1)}sensor{effect(22)} that could either check the {effect(1)}temperature{effect(22)} or the {effect(1)}pH{effect(22)} of the liquid.{effect(24)}")#main point of FA3
     time.sleep(0.5)
     print(f"{effect(3)}...Yes, the tray itself will compose the beakers. When the tray is deleted, the beakers would also be lost.\n")
     time.sleep(0.5)
@@ -114,28 +121,43 @@ def Program_run():#starts program and simple explanation
                                     time.sleep(0.1)
                                 elif fills > 5:
                                     print(f"{effect(22)}{effect(3)}You cannot input more than 5 beakers. Please input a number between 0-5.{effect(23)}")
-                                elif fills != 5:#must label
-                                    for fill in range(fills):
-                                        varname = input(f"\n{effect(23)}{effect(22)}Add a {effect(1)}label{effect(22)} to your beaker—it must be unique.\nIf it is not unique, it would replace the liquid in the beaker with the same label.\n{effect(1)}")
-                                        None.append(varname)#must have list
-                                    break
-                                else:None#no need to label
+                                else:break
+                        
+                        print(f"{effect(22)}{effect(23)}List of trays:")
+                        for tray in trays:print(f"{effect(1)}{tray}{effect(22)}")
+                        trayview1 = input(f"Input the tray to fill its beakers with.\n{effect(1)}")
+                        try:trays.index(trayview1)
+                        except ValueError:print(f"{effect(22)}{effect(3)}There is no {effect(1)}{trayview1}{effect(22)} in the trays. No beakers were filled.{effect(23)}")
+                        else:
+                            if fills != 5:#must label
+                                for fill in range(fills):
+                                    varname = input(f"\n{effect(23)}{effect(22)}Add a {effect(1)}label{effect(22)} to your beaker—it must be unique.\nIf it is not unique, it would replace the liquid in the beaker with the same label.\n{effect(1)}")
+                                    globals()[trayview1].beakers[fill].fill(Temp, pH)#NOW MAKE IT BIG!!! i meant filled
+                            else:
+                                for fill in range(len(globals()[trayview1])):globals()[trayview1].beakers[fill].fill(Temp, pH)
                     else:print(f"{effect(22)}{effect(3)}The pH must be an integer/decimal number between 0-14.{effect(23)}")
 
         elif inventory == "s":
-            SenseType = input(f"{effect(22)}{effect(23)}Input {effect(1)}{effect(3)}temp{effect(22)}{effect(23)} to check the temperature of a liquid in a beaker. Input {effect(1)}{effect(3)}ph{effect(22)}{effect(23)} to check the pH of the liquid. {effect(1)}\n")
-
+            SenseType = input(f"{effect(22)}{effect(23)}Input {effect(1)}{effect(3)}Temp{effect(22)}{effect(23)} to check the temperature of a liquid in a beaker. Input {effect(1)}{effect(3)}pH{effect(22)}{effect(23)} to check the pH of the liquid.{effect(1)}\n").lower()#inputting nothing will sense it generally...
+            if SenseType == "temp":
+                None
+            elif SenseType == "ph":
+                None
+            else:None
+    
         elif inventory == "v":
             print()
             if len(trays) == 1:print(f"{effect(22)}{effect(23)}There is just a tray.")
             elif len(trays) == 0:print(f"{effect(22)}{effect(23)}Not a tray there are.")
             else:print(f"{effect(22)}{effect(23)}There are {len(trays)} trays.")
             for indivtray in trays:
-                print(f"{effect(1)}{effect(3)}{indivtray}{effect(22)}{effect(23)} has {effect(1)}{len(globals()[indivtray].beakers)} {effect(3)}{Beaker().object_type}{effect(23)} beakers{effect(22)}")
-        
+                print(f"{effect(1)}{effect(3)}{indivtray}{effect(22)}{effect(23)} has:{effect(22)}")
+                for _ in globals()[indivtray].beakers:
+                    print(_)
                 #print all the properties of each
         
         else:break
+    input()
     time.sleep(1)
     sys("cls")#"cls" for VSCode, "clear" for onlinegdb
     time.sleep(0.4)
