@@ -1,19 +1,30 @@
 """
-※A creative title and explaination🥰
 ※Text effects, time module, and os module for emphasis and style
-※May have been used for reference: https://github.com/Ejirth/CS3/blob/main/Q1/q1_sg7_Pinatubo_Espiritu.py because plagiarizing without crediting is bad, also sampleInheristance and sampleComposition notes.
-※I regret this but it would be difficult but also uses chatgpt to make dynamic variables. ...and a little bit more for understanding ...
-※#some comments
-※Title for program kasi i am muon themed.
-※BETTER VERSION: https://github.com/krey2030/CS3/blob/main/Q2/fa2_9-pinatubo_rey.intal.py
- → This version can't be uploaded alongside more files, so the function used from an imported file is moved directly here.
+※Reuses q1_sg7_pinatubo_rey.intal.py and upgrades it
+※Severely unpolished, but the main purpose is still there
+ → to get the error, when sensing a filled beaker, not inputting either "temp" or "ph" would call the default sensor. calling it would cause the error. ofc thats intentional
+ → from the past sg, creating, viewing, and deleting a tray has been debugged
+ → Creating and viewing a tray was updated
+ → However, filling a tray or beaker is not debugged, and sensing an empty beaker too, unsure what might happen
+ → But the main purpose is still there: create, delete, view trays and beakers from sg7
+and the abstract method and the sensors, sensing a filled beaker's temperature, ph, or the abstract error stuff
+ → If I were to polish it, I would debug everything and fix the formatting of my text, time.sleep stuff and stuff,
+ but there is limited time already 【overdue actually】 
+ → Also haven't debugged all my files if it even works properly in python IDLE, it was made using VSCode, in other IDEs the effect function might not work
 
+※Final Checklist for KHub
+[✓] Did you import ABC and abstractmethod?
+[✓] Does the Sensor class have (ABC) next to its name?
+[✓] Did you use @abstractmethod before defining get_reading in the base class?
+[seems unnessecary] Did you use super().__init__() if you added names to your sensors?
+
+※※IMPORTANT; needed to be downloaded alongside this: https://github.com/krey2030/CS3/blob/main/important_module.py ※※
+Title for program kasi i am muon themed, and explaination
 """
 from os import system as sys #makes it simple
 from abc import *   
 import time
-def effect(Effect: int): #text style and emphasis for bold, italic, underlines, etc. EXTRA FEATURE for all my activities*
-    return f"\x1b[{Effect}m" #1 = bold, #3 = italic, #4 = underline, #22 removes bold, #23 removes italic, #24 = removes underline
+from important_module import * #REQUIRED TO DOWNLOAD "important_module"
 
 class Sensor(ABC):
     @abstractmethod
